@@ -1,6 +1,6 @@
 var clock = 0;
 var FPS = 60;
-var enemyhp = 100;
+var enemyhp = 50;
 var money = 100;
 var score = 0;
 var bglmg = document.createElement("img");
@@ -26,7 +26,7 @@ function draw() {
 	
 
 	if((clock%80) == 0){
-		enemyhp += 20;
+		enemyhp += 10;
 		var newEnemy = new enemy();
 			enemies.push(newEnemy);
 
@@ -77,7 +77,7 @@ function draw() {
 	ctx.fillText("money: " + money, 32, 96 );
 	if(HP <= 0){
 		clearInterval(intervalid)
-		ctx.fillText("gameover" , 100, 320 );
+		ctx.fillText("gameover" , 160, 320 );
 	}
 }
 
@@ -102,7 +102,7 @@ var enemypath =[
 	{x: 0, y: 0}
 ]
 
-var HP = 100;
+var HP = 200;
 function enemy(){
 	this.x = 320;
 	this.y = 480-32;
