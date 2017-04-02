@@ -1,7 +1,7 @@
 var clock = 0;
 var FPS = 60;
-var enemyhp = 50;
-var money = 100;
+var enemyhp = 100;
+var money = 500;
 var score = 0;
 var bglmg = document.createElement("img");
 var enemylmg = document.createElement("img");
@@ -26,7 +26,7 @@ function draw() {
 	
 
 	if((clock%80) == 0){
-		enemyhp += 10;
+		enemyhp += 20;
 		var newEnemy = new enemy();
 			enemies.push(newEnemy);
 
@@ -37,7 +37,7 @@ function draw() {
 	for(var i = 0; i < enemies.length; i++){
     	if(enemies[i].HP <= 0){
     		enemies.splice(i,1);
-    		money += 10;
+    		money += 50;
     		score += 15;
     	}else{
     		enemies[i].move();	
@@ -77,7 +77,11 @@ function draw() {
 	ctx.fillText("money: " + money, 32, 96 );
 	if(HP <= 0){
 		clearInterval(intervalid)
-		ctx.fillText("gameover" , 160, 320 );
+		ctx.font = "64px Arial";
+		ctx.fillText("gameover" , 160, 240 );
+		ctx.font = "32px Arial";
+		ctx.fillStyle = "yellow";
+		ctx.fillText("score: " + score , 160, 280 );
 	}
 }
 
@@ -213,12 +217,12 @@ function IB(){
     }else{
     	
     	if(IBB == true){
-    		if(money >= 10){
+    		if(money >= 125){
     		var newtower = new tower();
     		newtower.x = cursor.x - (cursor.x % 32);
     		newtower.y = cursor.y - (cursor.y % 32);
     		towers.push(newtower)
-    		money -= 10;
+    		money -= 125;
     	}
 	}
     	IBB = false;
